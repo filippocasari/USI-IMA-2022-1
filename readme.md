@@ -1,6 +1,6 @@
 ### Information Modelling & Analysis: Project 1
 
-Student: *enter your name here*
+Student: Filippo Casari
 
 ### Project instructions:
 Please follow the instructions provided in the project slides.
