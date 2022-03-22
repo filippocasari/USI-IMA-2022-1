@@ -143,7 +143,7 @@ from sys import stdout
 def write_csv(frame, name):
     frame.to_csv("./"+name + ".csv")
     
-    print("Csv of {name} was written succesfully ", file=stdout)
+    print(f"Csv of {name} was written succesfully ", file=stdout)
     
 
 

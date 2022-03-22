@@ -66,11 +66,6 @@ def return_output_first_step():
     return god_class_names_final
 
 
-
-
-
-
-
 # %% [markdown]
 # ## Second step, function that works with god classes passed to it
 
