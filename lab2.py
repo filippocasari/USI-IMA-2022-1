@@ -70,13 +70,23 @@ def second_step(java_god_class):
     all_fields=get_fields(java_god_class)
     print("len of all methods: ", len(all_methods))
     print("len of all fields: ", len(all_fields))
-    for i in all_methods:
-        frame_final[i]=np.int64(np.zeros(len(all_methods)))
-        
-    for i in all_fields:
-        frame_final[i]=np.int64(np.zeros(len(all_methods)))
+    df1={}
     
-
+    for i in all_methods:
+        
+        #frame_final[i]=pd.Series(np.int64(np.zeros(len(all_methods)))) # previus command
+        df1[i]=np.int64(np.zeros(len(all_methods)))
+    
+    for i in all_fields:
+        
+        df1[i]=np.int64(np.zeros(len(all_methods)))
+        #frame_final[i]=pd.Series(np.int64(np.zeros(len(all_methods))))
+        
+    #frame_final2=frame_final.copy()
+    #del frame_final
+    #frame_final=frame_final2.copy()
+    frame_final=pd.DataFrame(df1)
+    del df1
     
     #frame_final.to_csv("./"+java_god_class.name + ".csv")
     #print(len(java_god_class.methods))
@@ -123,17 +133,22 @@ def second_step(java_god_class):
     
     #print(frame_final.info())
     frame_final=frame_final.astype('int32')
-    frame_final.to_csv("./"+java_god_class.name + ".csv")
+    
     print("---------------------------------\n\n")
     print(f"number of columns for {java_god_class.name} is: {len(frame_final.columns)}")
-    print("---------------------------------\n\n")
+    print("\n---------------------------------\n\n")
+    return frame_final, java_god_class.name
+
+from sys import stdout
+def write_csv(frame, name):
+    frame.to_csv("./"+name + ".csv")
+    
+    print("Csv of {name} was written succesfully ", file=stdout)
     
 
-# %% [markdown]
-# ## Here second step of the project starts!
-# Iterating over all god classes
 
-# %%
+
+
 
 
 
