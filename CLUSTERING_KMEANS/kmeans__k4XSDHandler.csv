@@ -2,7 +2,7 @@
 0,null2EmptyString,1
 1,emptyString2Null,1
 2,doc2SystemId,1
-3,parseSchema,0
+3,parseSchema,2
 4,validateAnnotations,1
 5,createAnnotationValidator,1
 6,getGrammar,1
@@ -53,12 +53,12 @@
 51,addNewImportedGrammars,1
 52,updateImportList,1
 53,addNewGrammarComponents,1
-54,addGlobalElementDecls,1
-55,addGlobalAttributeDecls,1
-56,addGlobalAttributeGroupDecls,1
-57,addGlobalNotationDecls,1
-58,addGlobalGroupDecls,1
-59,addGlobalTypeDecls,1
+54,addGlobalElementDecls,3
+55,addGlobalAttributeDecls,3
+56,addGlobalAttributeGroupDecls,3
+57,addGlobalNotationDecls,3
+58,addGlobalGroupDecls,3
+59,addGlobalTypeDecls,3
 60,expandComponents,1
 61,expandRelatedComponents,0
 62,expandRelatedAttributeComponents,1
@@ -95,7 +95,7 @@
 93,removeParticle,1
 94,fillInLocalElemInfo,1
 95,checkForDuplicateNames,1
-96,renameRedefiningComponents,3
+96,renameRedefiningComponents,1
 97,findQName,1
 98,changeRedefineGroup,1
 99,findXSDocumentForDecl,1

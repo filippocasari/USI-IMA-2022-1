@@ -7,7 +7,7 @@
 5,createAnnotationValidator,0
 6,getGrammar,0
 7,findGrammar,0
-8,constructTrees,1
+8,constructTrees,2
 9,isExistingGrammar,0
 10,updateImportListFor,0
 11,updateImportListWith,0
@@ -53,12 +53,12 @@
 51,addNewImportedGrammars,0
 52,updateImportList,0
 53,addNewGrammarComponents,0
-54,addGlobalElementDecls,2
-55,addGlobalAttributeDecls,2
-56,addGlobalAttributeGroupDecls,2
-57,addGlobalNotationDecls,2
-58,addGlobalGroupDecls,2
-59,addGlobalTypeDecls,2
+54,addGlobalElementDecls,1
+55,addGlobalAttributeDecls,1
+56,addGlobalAttributeGroupDecls,1
+57,addGlobalNotationDecls,1
+58,addGlobalGroupDecls,1
+59,addGlobalTypeDecls,1
 60,expandComponents,0
 61,expandRelatedComponents,0
 62,expandRelatedAttributeComponents,0
