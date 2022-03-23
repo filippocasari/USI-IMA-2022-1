@@ -59,7 +59,8 @@ def get_methods_accessed_by_method(method, methods):
 
 #print(frame_final)
 
-
+def get_names_third_step(java_god_class):
+    return java_god_class.names
 
 def second_step(java_god_class):
     
@@ -140,10 +141,14 @@ def second_step(java_god_class):
     return frame_final, java_god_class.name
 
 from sys import stdout
+
 def write_csv(frame, name):
-    frame.to_csv("./"+name + ".csv")
+    if(os.path.isdir('./CSV')==False):
+        os.mkdir('./CSV')
+    frame.to_csv("./CSV/"+name + ".csv")
     
     print(f"Csv of {name} was written succesfully ", file=stdout)
+    
     
 
 
