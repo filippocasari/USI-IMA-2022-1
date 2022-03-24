@@ -1,7 +1,6 @@
 
-
-
 from statistics import mean
+from matplotlib.pyplot import pause
 from sklearn.cluster import k_means
 from sklearn.metrics import silhouette_score
 import pandas as pd
@@ -61,9 +60,33 @@ if(os.path.isdir(path_for_results)==False):
         os.mkdir(path_for_results)
 
 
+csv = (input("Making CSV for clustering files? Write yes or no: "))
+import sys
+if(csv=='yes'):
+    csv =True
+elif(csv=='no'):
+    csv=False
+else:
+    
+    print("answer not allowed", file=sys.stderr)
+    exit(-1)
+print(f"Does Csv have to be written? {csv}")
 
+txt=(input("Making a txt result files? Write yes or no: "))
+if(txt=='yes'):
+    txt =True
+elif(txt=='no'):
+    txt=False
+else:
+    
+    print("answer not allowed", file=sys.stderr)
+    exit(-2)
+print(f"Does Txt result have to be written? {txt}")
+
+assert(csv == True or csv==False)
+assert(txt == True or txt==False)
 for i in list_of_files:
-    max_k_kmeans, max_cluster_kmeans, max_k_hier, max_cluster_hier=silhouette(i, True)
+    max_k_kmeans, max_cluster_kmeans, max_k_hier, max_cluster_hier=silhouette(i, csv)
     string="\nFor god class "+str(i).replace('.csv', '')
     print("\nFor god class "+str(i).replace('.csv', ''))
     string+=f'\nFor K-means, best score: {max_cluster_kmeans} with k= {max_k_kmeans}'
@@ -72,8 +95,14 @@ for i in list_of_files:
     print(f'For Hierarchical clustering, best score: {max_cluster_hier} with k= {max_k_hier}')
     string+=f'\nFor Hierarchical clustering, best score: {max_cluster_hier} with k= {max_k_hier}'
     print("\n------------------------------------")
+    
+    
     with open('./RESULTS/final_results.txt', 'a') as f:
         f.write(string)
+    
+        
+        
+   
     
     
     

@@ -1,10 +1,10 @@
 
+For god class CoreDocumentImpl
+For K-means, best score: 0.7064525621520197 with k= 2
+For Hierarchical clustering, best score: 0.7506382736631925 with k= 2
 For god class XIncludeHandler
-For K-means, best score: 0.4125591096858703 with k= 2
+For K-means, best score: 0.6159340833666932 with k= 2
 For Hierarchical clustering, best score: 0.5441769256056056 with k= 2
 For god class XSDHandler
-For K-means, best score: 0.5757306968547318 with k= 2
+For K-means, best score: 0.53060409947233 with k= 2
 For Hierarchical clustering, best score: 0.53060409947233 with k= 2
-For god class CoreDocumentImpl
-For K-means, best score: 0.6239316239316239 with k= 52
-For Hierarchical clustering, best score: 0.7506382736631925 with k= 2

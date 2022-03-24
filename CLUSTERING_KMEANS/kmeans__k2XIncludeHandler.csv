@@ -13,9 +13,9 @@
 11,doctypeDecl,0
 12,comment,0
 13,processingInstruction,0
-14,startElement,1
-15,emptyElement,1
-16,endElement,1
+14,startElement,0
+15,emptyElement,0
+16,endElement,0
 17,startGeneralEntity,0
 18,textDecl,0
 19,endGeneralEntity,0
@@ -48,8 +48,8 @@
 46,getDTDHandler,0
 47,setDTDHandler,0
 48,setErrorReporter,0
-49,handleFallbackElement,1
-50,handleIncludeElement,0
+49,handleFallbackElement,0
+50,handleIncludeElement,1
 51,hasXIncludeNamespace,0
 52,isIncludeElement,0
 53,isFallbackElement,0
