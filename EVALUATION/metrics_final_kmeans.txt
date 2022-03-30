@@ -1,0 +1,30 @@
+
+########### FOR K-MEANS ###################
+
+Precision for XIncludeHandler is : 0.690530770587198
+
+Recall for XIncludeHandler is : 0.9777777777777777
+
+F1 score for XIncludeHandler is : 0.8094253823894171
+
+###############################
+
+########### FOR K-MEANS ###################
+
+Precision for XSDHandler is : 0.27739406384170245
+
+Recall for XSDHandler is : 0.931077694235589
+
+F1 score for XSDHandler is : 0.4274413922048037
+
+###############################
+
+########### FOR K-MEANS ###################
+
+Precision for CoreDocumentImpl is : 0.3413269384492406
+
+Recall for CoreDocumentImpl is : 0.7280477408354646
+
+F1 score for CoreDocumentImpl is : 0.4647619047619048
+
+###############################

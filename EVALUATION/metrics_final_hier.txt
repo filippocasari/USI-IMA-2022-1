@@ -1,0 +1,26 @@
+
+########### FOR K-HIERARCHICAL ###################
+
+Precision for XIncludeHandler is : 0.685337726523888
+
+Recall for XIncludeHandler is : 0.9348314606741573
+
+F1 score for XIncludeHandler is : 0.7908745247148291
+
+###############################
+
+Precision for XSDHandler is : 0.27739406384170245
+
+Recall for XSDHandler is : 0.931077694235589
+
+F1 score for XSDHandler is : 0.4274413922048037
+
+###############################
+
+Precision for CoreDocumentImpl is : 0.34152923538230884
+
+Recall for CoreDocumentImpl is : 0.9710144927536232
+
+F1 score for CoreDocumentImpl is : 0.5053238686779059
+
+###############################
