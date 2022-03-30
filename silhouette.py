@@ -1,7 +1,3 @@
-
-from statistics import mean
-from matplotlib.pyplot import pause
-from sklearn.cluster import k_means
 from sklearn.metrics import silhouette_score
 import pandas as pd
 import os
