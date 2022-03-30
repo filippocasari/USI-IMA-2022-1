@@ -1,0 +1,24 @@
+
+Precision for XIncludeHandler is : 0.6982895432904249
+
+Recall for XIncludeHandler is : 0.9780192640158064
+
+F1 score for XIncludeHandler is : 0.8148148148148148
+
+###############################
+
+Precision for XSDHandler is : 0.35859622923277956
+
+Recall for XSDHandler is : 0.9458394879369768
+
+F1 score for XSDHandler is : 0.5200324851109908
+
+###############################
+
+Precision for CoreDocumentImpl is : 0.3613109512390088
+
+Recall for CoreDocumentImpl is : 0.7246492985971944
+
+F1 score for CoreDocumentImpl is : 0.48219762635017993
+
+###############################
