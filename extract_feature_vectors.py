@@ -33,7 +33,7 @@ def get_fields_accessed_by_method(method, fields):
     array_of_fields_of_this_method = []
     for i, node in tree.filter(javalang.tree.MemberReference):
         # print(node.member)
-        if node.member not in fields and node.member not in array_of_fields_of_this_method:
+        if (node.member not in fields) and (node.member not in array_of_fields_of_this_method):
             array_of_fields_of_this_method.append(node.member)
     return array_of_fields_of_this_method
 
@@ -67,8 +67,8 @@ def get_names_third_step(java_god_class):
 def second_step(java_god_class):
 
     # print(columns)
-    frame_final = {}
-    frame_final = pd.DataFrame(frame_final)
+    #frame_final = {}
+    #frame_final = pd.DataFrame(frame_final)
     all_methods = get_methods(java_god_class)
     all_fields = get_fields(java_god_class)
     print("len of all methods: ", len(all_methods))
@@ -115,11 +115,11 @@ def second_step(java_god_class):
     frame_final = frame_final.iloc[len(all_methods):]
     frame_final = frame_final.fillna(np.int64(0))
 
-    # print(frame_final.info())
+    #print(frame_final.info())
     # print(frame_final.std())
     #print("before removing zeros columns: ", len(frame_final.columns))
-    frame_final = frame_final.loc[:, (frame_final != 0).any(axis=0)].copy()
-    #print("after removing zeros columns: ", len(frame_final.columns))
+    frame_final_2 = frame_final.loc[:, (frame_final != 0).any()].copy()
+    print("after removing zeros columns: ", len(frame_final_2.columns))
     from pathlib import Path
     path = Path("./"+java_god_class.name + ".csv")
 
@@ -131,13 +131,15 @@ def second_step(java_god_class):
         print(f'The file {"./"+java_god_class.name + ".csv"} does not exist')
 
     # print(frame_final.info())
-    frame_final = frame_final.astype('int32')
+    frame_final_2 = frame_final_2.astype('int32')
 
     print("---------------------------------\n\n")
     print(
-        f"number of columns for {java_god_class.name} is: {len(frame_final.columns)}")
+        f"number of columns for {java_god_class.name} is: {len(frame_final_2.columns)}")
+    print(
+        f"number of rows for {java_god_class.name} is: {len(frame_final_2.index)}")
     print("\n---------------------------------\n\n")
-    return frame_final, java_god_class.name
+    return frame_final_2, java_god_class.name
 
 
 def write_csv(frame, name):

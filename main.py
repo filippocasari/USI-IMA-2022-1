@@ -9,6 +9,5 @@ for cl in god_class_names_final['node'].values:
     write_csv(frame, name)
     names.append(name)
 
-
 def get_names_god_classes():
     return names
