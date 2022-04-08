@@ -85,15 +85,11 @@ def second_step(java_god_class):
         df1[i] = np.int64(np.zeros(len(all_methods)))
         # frame_final[i]=pd.Series(np.int64(np.zeros(len(all_methods))))
 
-    # frame_final2=frame_final.copy()
-    #del frame_final
-    # frame_final=frame_final2.copy()
+    
     frame_final = pd.DataFrame(df1)
     del df1
 
-    #frame_final.to_csv("./"+java_god_class.name + ".csv")
-    # print(len(java_god_class.methods))
-    # print(frame_final.info())
+    
     print("num rows dataframe:", len(all_methods))
     for i in (java_god_class.methods):
 
@@ -115,9 +111,7 @@ def second_step(java_god_class):
     frame_final = frame_final.iloc[len(all_methods):]
     frame_final = frame_final.fillna(np.int64(0))
 
-    #print(frame_final.info())
-    # print(frame_final.std())
-    #print("before removing zeros columns: ", len(frame_final.columns))
+    
     frame_final_2 = frame_final.loc[:, (frame_final != 0).any()].copy()
     print("after removing zeros columns: ", len(frame_final_2.columns))
     from pathlib import Path
@@ -130,7 +124,7 @@ def second_step(java_god_class):
     else:
         print(f'The file {"./"+java_god_class.name + ".csv"} does not exist')
 
-    # print(frame_final.info())
+    
     frame_final_2 = frame_final_2.astype('int32')
 
     print("---------------------------------\n\n")
