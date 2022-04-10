@@ -5,6 +5,8 @@ import os
 from hierarchical import hier_clustering
 from kmeans import kmeans_clustering
 path = './CSV'
+import numpy as np
+import matplotlib.pyplot as plt
 list_of_files = os.listdir(path)
 
 path_for_silhouette = './SIHLOUETTE'
@@ -20,7 +22,8 @@ def silhouette(path, make_csv=False):
     max_k_hier = 0
     max_cluster_kmeans = -1
     max_cluster_hier = -1
-
+    array_inertia_kmeans=[]
+    
     for k in range(2, 61, 1):
 
         X, cluster = hier_clustering(path, k, True)
@@ -33,8 +36,8 @@ def silhouette(path, make_csv=False):
 
         array_score_hier.append(out)
         #print(f"\nfor hierarchical clustering with k= {k} the shiluette score is: {out}\n")
-        X, cluster = kmeans_clustering(path, k, True)
-
+        X, cluster, intertia_kmeans = kmeans_clustering(path, k, True)
+        array_inertia_kmeans.append(intertia_kmeans)
         out = silhouette_score(X, cluster['cluster_id'])
 
         if(out > max_cluster_kmeans):
@@ -49,7 +52,20 @@ def silhouette(path, make_csv=False):
     if(make_csv == True):
         kmeans_out_data.to_csv(path_for_silhouette+'/kmeans_'+'_k'+str(k)+path)
         hier_out_data.to_csv(path_for_silhouette+'/hier_'+'_k'+str(k)+path)
-    return max_k_kmeans, max_cluster_kmeans, max_k_hier, max_cluster_hier
+    return max_k_kmeans, max_cluster_kmeans, max_k_hier, max_cluster_hier, array_inertia_kmeans
+
+
+def plot_intertia_kmeans(inertia, title):
+    #print("len inertia: ", len(inertia))
+    plt.figure(figsize=(12,8))
+    title='intertia kmeans, '+title
+    plt.plot(np.arange( 2,len(inertia)+2), inertia, 'o')
+    plt.plot(np.arange(2, len(inertia)+2), inertia, '-', alpha=0.5)
+    plt.xlabel('Number of Clusters'), plt.ylabel('Inertia')
+    plt.title(title)
+    plt.xticks(np.arange( 2,len(inertia)+2), rotation='vertical')
+    plt.tight_layout()
+    plt.show()
 
 
 path_for_results = './RESULTS'
@@ -82,14 +98,14 @@ print(f"Does Txt result have to be written? {txt}")
 assert(csv == True or csv == False)
 assert(txt == True or txt == False)
 for i in list_of_files:
-    max_k_kmeans, max_cluster_kmeans, max_k_hier, max_cluster_hier = silhouette(
+    max_k_kmeans, max_cluster_kmeans, max_k_hier, max_cluster_hier, array_interia_kmeans = silhouette(
         i, csv)
     string = "\nFor god class "+str(i).replace('.csv', '')
     print("\nFor god class "+str(i).replace('.csv', ''))
     string += f'\nFor K-means, best score: {max_cluster_kmeans} with k= {max_k_kmeans}'
     print(
         f'For K-means, best score: {max_cluster_kmeans} with k= {max_k_kmeans}')
-
+    
     print(
         f'For Hierarchical clustering, best score: {max_cluster_hier} with k= {max_k_hier}')
     string += f'\nFor Hierarchical clustering, best score: {max_cluster_hier} with k= {max_k_hier}'
@@ -97,3 +113,9 @@ for i in list_of_files:
 
     with open('./RESULTS/final_results.txt', 'a') as f:
         f.write(string)
+    plot_intertia_kmeans(array_interia_kmeans, str(i).replace('.csv', ''))
+
+
+
+
+

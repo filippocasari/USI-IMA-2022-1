@@ -34,5 +34,5 @@ def hier_clustering(path_file, k=5, make_csv=False):
 
 
 for i in list_of_files:
-    # print(i)
+   
     hier_clustering(i)

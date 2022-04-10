@@ -13,18 +13,20 @@ if(os.path.isdir(path_for_saving_clustering) == False):
 def kmeans_clustering(path_file, k=5, make_csv=False):
 
     df = pd.read_csv(path+'/'+path_file)
-    # print(df.head())
+    #print(df.head())
 
     cf = KMeans(k)
 
     #print(f"Shape of my dataframe before dropping method names: {(df.shape)}")
     method_names = df[df.columns[0]]
-    # print(method_names)
+    #print(method_names)
+    #print(df.columns[0])
     df = df.drop(df.columns[0], axis=1)
-    # print(df.head())
+    #print(df.head())
     # print(df.shape)
     array_1 = df.values
-    # print(array_1)
+    #print(array_1)
+    #print(df.tail())
 
     cf.fit(array_1)
     labels = cf.labels_
@@ -46,8 +48,8 @@ def kmeans_clustering(path_file, k=5, make_csv=False):
     # print(cluster.head)
     if(make_csv == True):
         cluster.to_csv(path_for_saving_clustering +
-                       '/kmeans_'+'_k'+str(k)+path_file)
-    return array_1, cluster
+                       '/kmeans'+'_k_'+str(k)+path_file)
+    return array_1, cluster, cf.inertia_
 
 
 for i in list_of_files:

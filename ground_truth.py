@@ -40,4 +40,4 @@ for i in list_of_files:
     ground_truth = pd.DataFrame(dictionary)
     ground_truth.to_csv(ground_truth_path+"/ground_truth_"+i)
 
-print("Ground truthfiles have been just created")
+print("Ground truth files have been just created")
