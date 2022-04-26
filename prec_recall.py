@@ -25,7 +25,7 @@ keywords = np.array(pd.read_csv(path_keywords)).ravel()
 def prec_recall_kmeans():
     for i in list_of_files:
         ground_truth = pd.read_csv(ground_truth_path+"/ground_truth_"+i)
-        data = pd.read_csv(path_result_step_third_kmeans+'kmeans__k2'+i)
+        data = pd.read_csv(path_result_step_third_kmeans+'kmeans_k_2'+i)
         # print(data)
         class_0 = np.array(data.loc[data['cluster_id'] == 0]['method_name'])
         # print(class_0)
@@ -157,8 +157,9 @@ def prec_recall_hier():
             f.write("\n###############################\n")
             f.close()
 
+print("-------------- KMEANS RESULTS --------------------")
+prec_recall_kmeans()
+print("-------------- HIERARCHICAL RESULTS --------------------")
 
 prec_recall_hier()
-prec_recall_kmeans()
-
 print("Exiting...")
