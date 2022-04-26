@@ -12,7 +12,8 @@ from find_god_classes import return_name_god_classes
 def get_methods(java_class_):
     array_of_methods = []
     for i in java_class_.methods:
-        array_of_methods.append(i.name)
+        if(i.name not in array_of_methods):
+            array_of_methods.append(i.name)
     return (array_of_methods)
 
 
@@ -36,7 +37,8 @@ def get_fields_accessed_by_method(method, fields):
 
     for i, node in tree.filter(javalang.tree.MemberReference):
         # print(node.member)
-        if (node.member not in fields) and (node.member not in array_of_fields_of_this_method):
+        
+        if (node.member in fields) and (node.member not in array_of_fields_of_this_method):
             array_of_fields_of_this_method.append(node.member)
     return array_of_fields_of_this_method
 
@@ -46,7 +48,7 @@ def get_methods_accessed_by_method(method, methods):
     array_of_methods_of_this_method = []
     for i, node in tree.filter(javalang.tree.MethodInvocation):
         # print(node.member)
-        if(node.member in methods and node.member != method.name):
+        if(node.member in methods and node.member != method.name and node.member not in array_of_methods_of_this_method):
             array_of_methods_of_this_method.append(node.member)
         # if node.member not in fields and node.member not in array_of_fields_of_this_method:
         #    array_of_fields_of_this_method.append(node.member)
@@ -73,67 +75,71 @@ def second_step(java_god_class):
     #frame_final = {}
     #frame_final = pd.DataFrame(frame_final)
     array_of_god_classes=return_name_god_classes()
+    print("names: ", array_of_god_classes)
     i=0
-    for _, klass in (java_god_class.filter(javalang.tree.ClassDeclaration)):
-        if(klass.name in array_of_god_classes):
+    for node, name in (java_god_class.filter(javalang.tree.ClassDeclaration)):
+        
+        if(name in array_of_god_classes):
             
-            java_god_class=klass
+            java_god_class = node
             break
         i+=1
-        print(klass.name)
+        #print(name)
     print(i)
     all_methods = get_methods(java_god_class)
     all_fields = get_fields(java_god_class)
     print("len of all methods: ", len(all_methods))
     print("len of all fields: ", len(all_fields))
     df1 = {}
-
+    
     for i in all_methods:
 
         # frame_final[i]=pd.Series(np.int64(np.zeros(len(all_methods)))) # previus command
-        df1[i] = np.int64(np.zeros(len(all_methods)))
+        df1[i] = np.int64(np.zeros(len(java_god_class.methods)))
 
     for i in all_fields:
 
-        df1[i] = np.int64(np.zeros(len(all_methods)))
+        df1[i] = np.int64(np.zeros(len(java_god_class.methods)))
         # frame_final[i]=pd.Series(np.int64(np.zeros(len(all_methods))))
-
     
-    frame_final = pd.DataFrame.from_dict(df1)
-    
-    
-
-    
-    print("num rows dataframe:", len(all_methods))
-    i =0
-    
-
-
-            
-    counter=0
-    for i in (all_methods):
-
+   
+    frame_final = pd.DataFrame(df1)
+    frame_final = frame_final.loc[:,~frame_final.columns.duplicated()]
+    #print(f"columns in frame before removing zeros: {len(frame_final.columns)}")
+    print("shape frame: ", frame_final.shape)
+    #print("num rows dataframe:", len(all_methods))
+    #matrix=np.zeros((len(all_methods), (len(all_methods) + len(all_fields))))
+    row=-1
+    duplicates=[]
+    for i in (java_god_class.methods):
+        if(i.name not in all_methods or i.name in duplicates):
+            continue
+        duplicates.append(i.name)
+        row+=1
         fields_accessed_by_method = get_fields_accessed_by_method(
             i, all_fields)
         methods_accessed_by_method = get_methods_accessed_by_method(
             i, all_methods)
-        
-
+        #print(f"len of array of methods accessed by current method {len(methods_accessed_by_method)}")
+        #print(f"len of array of fields accessed by current method {len(fields_accessed_by_method)}")
+        #col=0
         for field in fields_accessed_by_method:
-            
-            frame_final.at[i.name, field] = np.int32(1)
-
+           
+            frame_final.loc[i.name, field] = np.int32(1)
+        
         for method in methods_accessed_by_method:
 
-            frame_final.at[i.name, method] = np.int32(1)
-
-    #frame_final = frame_final.iloc[len(all_methods):]
+            frame_final.loc[i.name, method] = np.int32(1)
+           
     frame_final = frame_final.fillna(np.int64(0))
-
+    frame_final = frame_final.iloc[len(all_methods):]
     
-    frame_final_2 = frame_final.loc[:, (frame_final != 0).any(axis=0)].copy()
-    print("before removing zeros columns: ", len(frame_final.columns))
-    print("after removing zeros columns: ", len(frame_final_2.columns))
+    frame_final = frame_final.loc[:,~frame_final.columns.duplicated()]
+    
+    frame_final_2 = frame_final.loc[:, (frame_final != 0).any()].copy()
+    #print("before removing zeros columns: ", len(frame_final.columns))
+    print("shape of frame before removing zeros: ", (frame_final.shape))
+    print("shape of frame after removing zeros: ", (frame_final_2.shape))
 
     from pathlib import Path
     path = Path("./"+java_god_class.name + ".csv")
@@ -149,11 +155,13 @@ def second_step(java_god_class):
     frame_final_2 = frame_final_2.astype('int32')
 
     print("---------------------------------\n\n")
+    '''
     print(
         f"number of columns for {java_god_class.name} is: {len(frame_final_2.columns)}")
     print(
         f"number of rows for {java_god_class.name} is: {len(frame_final_2.index)}")
     print("\n---------------------------------\n\n")
+    '''
     return frame_final_2, java_god_class.name
 
 
