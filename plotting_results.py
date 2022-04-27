@@ -98,7 +98,12 @@ for name in god_classes:
 
 fig.tight_layout()
 plt.show()
-fig.savefig('sihlouette.png')
+try:
+    fig.savefig('sihlouette.png')
+    print("picture saved")
+except:
+    print("error while it was saving the picture...")
+
 
 
 # print(files_kmeans)
