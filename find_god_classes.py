@@ -9,8 +9,9 @@ d = {'class_name': [] , 'methods_num': []}
 start = time.time()
 
 array_of_paths = {'name': [], 'path': [], 'node': []}  # creating a 
+number_methods=[]
 
-for root, dirs, files in os.walk(".", topdown=False):
+for root, dirs, files in os.walk("./resources/"):
 
     for name in files:
 
@@ -21,22 +22,20 @@ for root, dirs, files in os.walk(".", topdown=False):
             data = open(nome).read()
             tree_tmp = javalang.parse.parse(data)
             #print(tree_tmp)
-            for klass in tree_tmp.types:
+            for i, klass in tree_tmp.filter(javalang.tree.ClassDeclaration):
                 name_class = klass.name
                 
-                if(isinstance(klass, javalang.tree.ClassDeclaration)==False):
-                    print(f"name of file: {name}, name of the class: {name_class}")
-                    print("discarded because is not a class declaration")
-                    #print("********\n", klass, "********\n")
+                '''
                 if(name_class in d['class_name']):
                     print(f"name of file: {name}, name of the class: {name_class}")
-                    print("discarded because is already in the dict")
+                    #print("discarded because is already in the dict")
 
                 if name.replace('.java', '') != name_class:
                     print(f"name of file: {name}, name of the class: {name_class}")
-                    print("discarded because name of class and file do not match")
-
-                if name_class not in d['class_name'] and name.replace('.java', '') == name_class:
+                    print("discarded because name of class and file do not match")'''
+                #print("NAME: "+name)
+                number_methods.append(len(klass.methods))
+                if name.replace('.java', '') == name_class:
                     
                     
                     array_of_paths['name'].append(name_class)
@@ -50,24 +49,22 @@ for root, dirs, files in os.walk(".", topdown=False):
                     
                     
                     
-                
-                    
+import numpy as np
+number_methods=np.array(number_methods)
 print("time of execution: ", time.time()-start, " seconds")
 
 # %%
 dataframe = pd.DataFrame(d)
 print(dataframe)
-mean_num_methods = dataframe['methods_num'].mean()
-std_num_methods = dataframe['methods_num'].std()
+mean_num_methods = number_methods.mean()#dataframe['methods_num'].mean()
+std_num_methods = number_methods.std()#dataframe['methods_num'].std()
 print(f"mean of # methods= {mean_num_methods:.4f}" )
 print(f"std of  # methods= {std_num_methods:.4f}" )
-
-names_god_classes = dataframe.loc[dataframe['methods_num'] > (mean_num_methods+(6*std_num_methods))]
-
-
+print(f"mean * (6*std): {mean_num_methods+(6.0*std_num_methods)}")
+names_god_classes = dataframe.loc[dataframe['methods_num'] > (mean_num_methods+(6.0*std_num_methods))]
 
 print("The God classes are: ")
-for i, j  in zip(names_god_classes["class_name"],names_god_classes['methods_num']) :
+for i, j  in zip(names_god_classes["class_name"],names_god_classes['methods_num']):
     print(f"Name: {i} with number of methods: {j}")
 
     
