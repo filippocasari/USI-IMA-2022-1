@@ -16,9 +16,9 @@ def hier_clustering(path_file, k=5, make_csv=False):
     cf = AgglomerativeClustering(k)
 
     #print(f"Shape of my dataframe before dropping method names: {(df.shape)}")
-    method_names = df[df.columns[0]]
-    # print(method_names)
-    df = df.drop(df.columns[0], axis=1)
+    method_names = df['name_method']
+   
+    df = df.drop(['name_method', 'Unnamed: 0'], axis=1)
     array_1 = df.values
     cf.fit(array_1)
     labels = cf.labels_

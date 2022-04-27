@@ -19,8 +19,8 @@ keywords = np.array(pd.read_csv(path_keywords)).ravel()
 
 for i in list_of_files:
     data = pd.read_csv(path_csv+'/'+i)
-    data.rename(columns={'Unnamed: 0': 'Name'}, inplace=True)
-    methods = np.array(data['Name'])
+    #data.rename(columns={'Unnamed: 0': 'Name'}, inplace=True)
+    methods = data['name_method']
     # print(methods)
     dictionary = {'method_name': [], 'cluster_id': []}
 

@@ -16,12 +16,14 @@ def kmeans_clustering(path_file, k=5, make_csv=False):
     #print(df.head())
 
     cf = KMeans(k)
-
+    #print(df.head())
     #print(f"Shape of my dataframe before dropping method names: {(df.shape)}")
-    method_names = df[df.columns[0]]
+    method_names = df['name_method']
+    #print(method_names)
     #print(method_names)
     #print(df.columns[0])
-    df = df.drop(df.columns[0], axis=1)
+    df = df.drop(['name_method', 'Unnamed: 0'], axis=1)
+    #print(df.head())
     #print(df.head())
     # print(df.shape)
     array_1 = df.values

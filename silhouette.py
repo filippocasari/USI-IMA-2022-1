@@ -25,7 +25,7 @@ def silhouette(path, make_csv=False):
     array_inertia_kmeans=[]
     
     for k in range(2, 61, 1):
-
+        
         X, cluster = hier_clustering(path, k, True)
         array_k.append(k)
         out = silhouette_score(X, cluster['cluster_id'])

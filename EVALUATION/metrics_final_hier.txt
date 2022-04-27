@@ -1,170 +1,32 @@
 
-########### FOR K-HIERARCHICAL ###################
+Precision for XIncludeHandler is : 0.6879266978081208
 
-Precision for XIncludeHandler is : 0.685337726523888
+Recall for XIncludeHandler is : 0.9560549313358302
 
-Recall for XIncludeHandler is : 0.9348314606741573
-
-F1 score for XIncludeHandler is : 0.7908745247148291
+F1 score for XIncludeHandler is : 0.8001253787483023
 
 ###############################
 
-Precision for XSDHandler is : 0.27739406384170245
+Precision for XSDHandler is : 0.2683730851270118
 
-Recall for XSDHandler is : 0.931077694235589
+Recall for XSDHandler is : 0.8671679197994987
 
-F1 score for XSDHandler is : 0.4274413922048037
-
-###############################
-
-Precision for CoreDocumentImpl is : 0.34152923538230884
-
-Recall for CoreDocumentImpl is : 0.9710144927536232
-
-F1 score for CoreDocumentImpl is : 0.5053238686779059
+F1 score for XSDHandler is : 0.40989189989634234
 
 ###############################
 
-Precision for XIncludeHandler is : 0.685337726523888
+Precision for DTDGrammar is : 0.5114754098360655
 
-Recall for XIncludeHandler is : 0.9348314606741573
+Recall for DTDGrammar is : 0.5416666666666666
 
-F1 score for XIncludeHandler is : 0.7908745247148291
-
-###############################
-
-Precision for XSDHandler is : 0.27739406384170245
-
-Recall for XSDHandler is : 0.931077694235589
-
-F1 score for XSDHandler is : 0.4274413922048037
+F1 score for DTDGrammar is : 0.5261382799325462
 
 ###############################
 
-Precision for CoreDocumentImpl is : 0.34152923538230884
+Precision for CoreDocumentImpl is : 0.32933375434164824
 
-Recall for CoreDocumentImpl is : 0.9710144927536232
+Recall for CoreDocumentImpl is : 0.8891730605285593
 
-F1 score for CoreDocumentImpl is : 0.5053238686779059
-
-###############################
-
-Precision for XIncludeHandler is : 0.685337726523888
-
-Recall for XIncludeHandler is : 0.9348314606741573
-
-F1 score for XIncludeHandler is : 0.7908745247148291
-
-###############################
-
-Precision for XSDHandler is : 0.27739406384170245
-
-Recall for XSDHandler is : 0.931077694235589
-
-F1 score for XSDHandler is : 0.4274413922048037
-
-###############################
-
-Precision for CoreDocumentImpl is : 0.34152923538230884
-
-Recall for CoreDocumentImpl is : 0.9710144927536232
-
-F1 score for CoreDocumentImpl is : 0.5053238686779059
-
-###############################
-
-Precision for XIncludeHandler is : 0.685337726523888
-
-Recall for XIncludeHandler is : 0.9348314606741573
-
-F1 score for XIncludeHandler is : 0.7908745247148291
-
-###############################
-
-Precision for XSDHandler is : 0.27739406384170245
-
-Recall for XSDHandler is : 0.931077694235589
-
-F1 score for XSDHandler is : 0.4274413922048037
-
-###############################
-
-Precision for CoreDocumentImpl is : 0.34152923538230884
-
-Recall for CoreDocumentImpl is : 0.9710144927536232
-
-F1 score for CoreDocumentImpl is : 0.5053238686779059
-
-###############################
-
-Precision for XIncludeHandler is : 0.685337726523888
-
-Recall for XIncludeHandler is : 0.9348314606741573
-
-F1 score for XIncludeHandler is : 0.7908745247148291
-
-###############################
-
-Precision for XSDHandler is : 0.27739406384170245
-
-Recall for XSDHandler is : 0.931077694235589
-
-F1 score for XSDHandler is : 0.4274413922048037
-
-###############################
-
-Precision for CoreDocumentImpl is : 0.34152923538230884
-
-Recall for CoreDocumentImpl is : 0.9710144927536232
-
-F1 score for CoreDocumentImpl is : 0.5053238686779059
-
-###############################
-
-Precision for XIncludeHandler is : 0.685337726523888
-
-Recall for XIncludeHandler is : 0.9348314606741573
-
-F1 score for XIncludeHandler is : 0.7908745247148291
-
-###############################
-
-Precision for XSDHandler is : 0.27739406384170245
-
-Recall for XSDHandler is : 0.931077694235589
-
-F1 score for XSDHandler is : 0.4274413922048037
-
-###############################
-
-Precision for CoreDocumentImpl is : 0.34152923538230884
-
-Recall for CoreDocumentImpl is : 0.9710144927536232
-
-F1 score for CoreDocumentImpl is : 0.5053238686779059
-
-###############################
-
-Precision for XIncludeHandler is : 0.685337726523888
-
-Recall for XIncludeHandler is : 0.9348314606741573
-
-F1 score for XIncludeHandler is : 0.7908745247148291
-
-###############################
-
-Precision for XSDHandler is : 0.27739406384170245
-
-Recall for XSDHandler is : 0.931077694235589
-
-F1 score for XSDHandler is : 0.4274413922048037
-
-###############################
-
-Precision for CoreDocumentImpl is : 0.34152923538230884
-
-Recall for CoreDocumentImpl is : 0.9710144927536232
-
-F1 score for CoreDocumentImpl is : 0.5053238686779059
+F1 score for CoreDocumentImpl is : 0.48064516129032264
 
 ###############################

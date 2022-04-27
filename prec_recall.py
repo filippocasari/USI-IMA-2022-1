@@ -24,8 +24,16 @@ keywords = np.array(pd.read_csv(path_keywords)).ravel()
 
 def prec_recall_kmeans():
     for i in list_of_files:
+
+        string_num = '2'
+        if(i.replace('csv', '') == 'XSDHandler'):
+            string_num='3'
+        elif(i.replace('csv', '') == 'DTDGrammar'):
+            string_num='53'
+        elif(i.replace('csv', '') == 'CoreDocumentImpl'):
+            string_num='40'
         ground_truth = pd.read_csv(ground_truth_path+"/ground_truth_"+i)
-        data = pd.read_csv(path_result_step_third_kmeans+'kmeans_k_2'+i)
+        data = pd.read_csv(path_result_step_third_kmeans+'kmeans_k_'+string_num+i)
         # print(data)
         class_0 = np.array(data.loc[data['cluster_id'] == 0]['method_name'])
         # print(class_0)
@@ -93,7 +101,14 @@ def prec_recall_kmeans():
 def prec_recall_hier():
     for i in list_of_files:
         ground_truth = pd.read_csv(ground_truth_path+"/ground_truth_"+i)
-        data = pd.read_csv(path_result_step_third_hier+'hier_k2_'+i)
+        string_num = '2'
+        if(i.replace('csv', '') == 'DTDGrammar'):
+            string_num='56'
+        elif(i.replace('csv', '') == 'CoreDocumentImpl'):
+            string_num='39'
+            
+
+        data = pd.read_csv(path_result_step_third_hier+'hier_k'+string_num+'_'+i)
         # print(data)
         class_0 = np.array(data.loc[data['cluster_id'] == 0]['method_name'])
         # print(class_0)
